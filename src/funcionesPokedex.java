@@ -45,7 +45,9 @@ public class funcionesPokedex {
         try (
                 Session ses = HibernateConfig.getSessionFactory().openSession();
         ) {
+            Query query = ses.createQuery("from pokedex p order by p.id ASC", pokedex.class);
             return ses.get(pokedex.class, id);
+
         } catch (Exception e) {
             System.err.println("ERROR TIPO:" + e.getMessage());
             return null;
@@ -62,6 +64,7 @@ public class funcionesPokedex {
             List<pokedex> listaPokedex = ses.createQuery("from pokedex where nome = :nome", pokedex.class)
                     .setParameter("nome", nomePokedex)
                     .getResultList();
+            Query query = ses.createQuery("from pokedex p order by p.id ASC", pokedex.class);
             if (!listaPokedex.isEmpty()) {
                 poke = listaPokedex.get(0);
             } else {
@@ -83,7 +86,7 @@ public class funcionesPokedex {
         try (
                 Session ses = HibernateConfig.getSessionFactory().openSession();
         ) {
-            Transaction transaction = ses.getTransaction();
+            Transaction transaction = ses.beginTransaction();
 
             pokedex entradaPokedex = ses.get(pokedex.class, id);
 
@@ -91,7 +94,11 @@ public class funcionesPokedex {
                 entradaPokedex.setNome(nome);
                 entradaPokedex.setPeso(peso);
                 entradaPokedex.setMisc(misc);
-                ses.update(entradaPokedex);
+
+                //ses.update(entradaPokedex);
+                //Gemini dixóme que merge era mellor
+                //ses.merge(entradaPokedex);
+                // Gemini dixóme que ningunha era necesaria
             } else {
                 System.err.println("ENTRADA NON ATOPADA");
             }
@@ -108,7 +115,7 @@ public class funcionesPokedex {
     public void actualizarPokedexObjeto(pokedex entradaPokedex) {
         try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = ses.getTransaction();
-            ses.update(entradaPokedex);
+            ses.merge(entradaPokedex);
             transaction.commit();
         } catch (Exception e) {
             System.err.println("Error ao actualizar a pokedex: " + e.getMessage());

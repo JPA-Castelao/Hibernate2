@@ -4,16 +4,9 @@ public class Main {
     public static void main(String[] args) {
 
         funcionesPokedex fp = new funcionesPokedex();
-        //fp.insertarPokedexCampos("Slowpoke",300.00,"Pokemon moi tranquilo");
-//        fp.insertarPokedexCampos("Probopass", 340.00, "Pokemon parecido a Stalin");
-//        fp.insertarPokedexCampos("Mr.Mime", 100.00, "Pokemon moi paxaso");
-        //fp.insertarPokedexCampos("Psyduck", 40.00, "e literalmente un pato");
-
-        fp.leerPokedex(1);
-        fp.leerPokedexPorNombre("Psyduck");
-      //  fp.eliminarPokedex(1);
-        fp.eliminarPokedexNombre("Psyduck");
-
-
+        funcionesAdestrador fad = new funcionesAdestrador();
+        adestrador ad2 = new adestrador("Kyriakos Grizzly", "01/01/0001");
+       // fad.insertarAdestradorCampos("Paco Ibañez", "12/08/1947");
+        fad.insertarAdestradorObjeto(ad2);
     }
 }
