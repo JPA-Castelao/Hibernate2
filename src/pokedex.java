@@ -17,9 +17,12 @@ public class pokedex {
         this.misc = misc;
     }
 
+    public pokedex() {
+
+    }
+
     @Column(name = "misc", length = 100)
     private String misc;
-
 
 
     public int getId() {
