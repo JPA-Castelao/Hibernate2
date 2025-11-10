@@ -1,12 +1,18 @@
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "pokedex")
-public class pokedex {
+@XmlRootElement(name = "pokedex")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class pokedex implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlTransient
     private int id;
     @Column(name = "nome", nullable = false, length = 100)
+    @XmlElement(name = "nome")
     private String nome;
     @Column(name = "peso", precision = 5, scale = 2)
     private double peso;

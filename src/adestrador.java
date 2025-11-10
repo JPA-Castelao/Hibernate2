@@ -1,17 +1,27 @@
+import resources.LocalDateAdapter;
+
 import javax.persistence.*;
+import javax.xml.bind.annotation.*;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "adestrador")
-public class adestrador {
+@XmlRootElement(name = "adestrador")
+@XmlAccessorType(XmlAccessType.FIELD)
+public class adestrador implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @XmlTransient
     private int id;
     @Column(name = "nome", nullable = false, length = 100)
+    @XmlElement(name = "nome")
     private String nome;
     @Column(name = "nacemento")
+    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate nacemento;
 
     public int getId() {

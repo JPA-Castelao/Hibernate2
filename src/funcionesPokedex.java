@@ -25,9 +25,7 @@ public class funcionesPokedex {
     }
 
     public void insertarPokedexobjeto(pokedex entradaPokedex) {
-        try (
-                Session ses = HibernateConfig.getSessionFactory().openSession();
-        ) {
+        try (Session ses = HibernateConfig.getSessionFactory().openSession();) {
 
             Transaction transaction = ses.beginTransaction();
             ses.save(entradaPokedex);
@@ -42,9 +40,7 @@ public class funcionesPokedex {
 
     public pokedex leerPokedex(int id) {
 
-        try (
-                Session ses = HibernateConfig.getSessionFactory().openSession();
-        ) {
+        try (Session ses = HibernateConfig.getSessionFactory().openSession();) {
             Query query = ses.createQuery("from pokedex p order by p.id ASC", pokedex.class);
             return ses.get(pokedex.class, id);
 
@@ -54,16 +50,37 @@ public class funcionesPokedex {
         }
     }
 
+    public ArrayList<pokedex> leerPokedexToda() {
+        List<pokedex> lista = null;
+        ArrayList<pokedex> listaPokedex = new ArrayList<>();
+        try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
+
+            String hql = "FROM pokedex";
+
+
+
+            Query<pokedex> query = ses.createQuery(hql, pokedex.class);
+
+            lista = query.list();
+
+            listaPokedex.addAll(lista);
+            for (pokedex p : listaPokedex) {
+                System.out.println("Id- " + p.getId() + " Nome- " + p.getNome());
+            }
+            return listaPokedex;
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public pokedex leerPokedexPorNombre(String nomePokedex) {
         pokedex poke = null;
-        try (
-                Session ses = HibernateConfig.getSessionFactory().openSession()
-        ) {
+        try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
             Transaction transaction = ses.beginTransaction();
 
-            List<pokedex> listaPokedex = ses.createQuery("from pokedex where nome = :nome", pokedex.class)
-                    .setParameter("nome", nomePokedex)
-                    .getResultList();
+            List<pokedex> listaPokedex = ses.createQuery("from pokedex where nome = :nome", pokedex.class).setParameter("nome", nomePokedex).getResultList();
             Query query = ses.createQuery("from pokedex p order by p.id ASC", pokedex.class);
             if (!listaPokedex.isEmpty()) {
                 poke = listaPokedex.get(0);
@@ -83,9 +100,7 @@ public class funcionesPokedex {
 
     public void actualizarPokedex(int id, String nome, double peso, String misc) {
 
-        try (
-                Session ses = HibernateConfig.getSessionFactory().openSession();
-        ) {
+        try (Session ses = HibernateConfig.getSessionFactory().openSession();) {
             Transaction transaction = ses.beginTransaction();
 
             pokedex entradaPokedex = ses.get(pokedex.class, id);
@@ -148,9 +163,7 @@ public class funcionesPokedex {
         try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
 
             Transaction transaction = ses.beginTransaction();
-            List<pokedex> listaPokedex = ses.createQuery(" from pokedex where nome = :nome", pokedex.class)
-                    .setParameter("nome", nome)
-                    .getResultList();
+            List<pokedex> listaPokedex = ses.createQuery(" from pokedex where nome = :nome", pokedex.class).setParameter("nome", nome).getResultList();
 
 
             if (!listaPokedex.isEmpty()) {
