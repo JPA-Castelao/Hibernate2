@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Entrada>
+    <pokedex>
+        <nome>Probopass</nome>
+        <peso>340.0</peso>
+        <misc>Pokemon parecido a Stalin</misc>
+    </pokedex>
+    <pokedex>
+        <nome>Psyduck</nome>
+        <peso>40.0</peso>
+        <misc>e literalmente un pato</misc>
+    </pokedex>
+    <pokedex>
+        <nome>Lickitung</nome>
+        <peso>40.0</peso>
+        <misc>Ten lingua</misc>
+    </pokedex>
+    <pokedex>
+        <nome>Lickitung</nome>
+        <peso>40.0</peso>
+        <misc>Ten lingua</misc>
+    </pokedex>
+    <pokedex>
+        <nome>Lickitung</nome>
+        <peso>40.0</peso>
+        <misc>Ten lingua</misc>
+    </pokedex>
+    <pokedex>
+        <nome>Pikachu</nome>
+        <peso>30.0</peso>
+        <misc>ElectroRoedor</misc>
+    </pokedex>
+</Entrada>
