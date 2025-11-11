@@ -1,10 +1,7 @@
-import resources.LocalDateAdapter;
-
 import javax.persistence.*;
 import javax.xml.bind.annotation.*;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -21,7 +18,6 @@ public class adestrador implements Serializable {
     @XmlElement(name = "nome")
     private String nome;
     @Column(name = "nacemento")
-    @XmlJavaTypeAdapter(LocalDateAdapter.class)
     private LocalDate nacemento;
 
     public int getId() {

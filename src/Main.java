@@ -9,15 +9,20 @@ public class Main {
         // fad.insertarAdestradorObjeto(ad2);
         //fad.insertarAdestradorCampos("Brock", "12/05/2002");
 
-
-        fad.modificarAdestradorID(2,"Bruck","01/02/2003");
-        fad.modificarAdestradorID(1,"Kyriakos Kapakoulak ","01/02/2003");
-
-        fad.lerAdestradores();
-
-        fp.actualizarPokedex(2,"Pikachu",40,"Electroroedor");
-        fp.actualizarPokedex(3,"Torterra",4000,"Sapoconcho");
+//
+//        fad.modificarAdestradorID(2,"Bruck","01/02/2003");
+//        fad.modificarAdestradorID(1,"Kyriakos Kapakoulak ","01/02/2003");
+//
+//        fad.lerAdestradores();
+//
+//        fp.actualizarPokedex(2,"Pikachu",40,"Electroroedor");
+//        fp.actualizarPokedex(3,"Torterra",4000,"Sapoconcho");
         fp.leerPokedexToda();
+
+        conversorXML cx = new conversorXML();
+        cx.conversorPokedex(fp.leerPokedexToda());
+        fad.lerAdestradores();
+        cx.conversorAdestrador(fad.lerAdestradores());
 
 
     }

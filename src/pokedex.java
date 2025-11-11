@@ -16,6 +16,13 @@ public class pokedex implements Serializable {
     private String nome;
     @Column(name = "peso", precision = 5, scale = 2)
     private double peso;
+    @Column(name = "misc", length = 100)
+    private String misc;
+
+    public void pokedex() {
+
+
+    }
 
     public pokedex(String nome, double peso, String misc) {
         this.nome = nome;
@@ -27,8 +34,6 @@ public class pokedex implements Serializable {
 
     }
 
-    @Column(name = "misc", length = 100)
-    private String misc;
 
 
     public int getId() {

@@ -91,4 +91,16 @@ public class funcionesAdestrador {
 
         }
     }
+
+    public void eliminarTaboa() {
+        try (
+                Session ses = HibernateConfig.getSessionFactory().openSession();
+        ) {
+
+
+
+        }
+    }
+
+
 }
