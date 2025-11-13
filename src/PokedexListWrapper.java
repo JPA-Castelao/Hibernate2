@@ -12,10 +12,9 @@ public class PokedexListWrapper {
 
     }
 
-    public PokedexListWrapper(List<pokedex> lista) {
+    public PokedexListWrapper(List<pokedex>     lista) {
         this.lista = lista;
     }
-
 
     @XmlElement(name = "pokedex")
     public List<pokedex> getEntrie() {

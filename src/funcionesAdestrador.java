@@ -30,7 +30,6 @@ public class funcionesAdestrador {
             throw new RuntimeException();
         }
 
-
     }
 
     public void insertarAdestradorObjeto(adestrador ad) {
@@ -49,9 +48,7 @@ public class funcionesAdestrador {
             System.err.println("ERRO AO INSERTAR ADESTRADOR: " + e.getMessage());
         }
 
-
     }
-
 
     public List<adestrador> lerAdestradores() {
         List<adestrador> listaAdestradores;
@@ -59,9 +56,6 @@ public class funcionesAdestrador {
         try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
 
             Transaction transaction = ses.beginTransaction();
-
-            Query<adestrador> o = ses.createQuery("FROM adestrador a order by a.id ASC");
-
             String q = "from adestrador";
             Query<adestrador> query = ses.createQuery(q, adestrador.class);
 
@@ -78,7 +72,6 @@ public class funcionesAdestrador {
         adestrador ad;
         try (Session ses = HibernateConfig.getSessionFactory().openSession();) {
             Transaction trans = ses.beginTransaction();
-
 
             ad = ses.get(adestrador.class, id);
             ad.setNome(novoNome);

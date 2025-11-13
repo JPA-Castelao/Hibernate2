@@ -8,28 +8,28 @@ public class Main {
 
         //Insertar 10 pokemons na pokedex
 
-//        fp.insertarPokedexCampos("Venusaur", 100.00, "Sapo arbore");
-//        fp.insertarPokedexCampos("Beedrill ", 29.5, "Avispa");
-//        fp.insertarPokedexCampos("Nidoking ", 62.0, "Koalasaurio");
-//        fp.insertarPokedexCampos("Vileplume  ", 18.6, "seta");
-//        fp.insertarPokedexCampos("Meowth", 4.2, "Gato");
-//
-//        pokedex poke1 = new pokedex("Golbat", 55.0, "Murciegalo");
-//        pokedex poke2 = new pokedex("Blastoise ", 85.5, "Tortuga");
-//        pokedex poke3 = new pokedex("Charizard ", 90.5, "dragon");
-//        pokedex poke4 = new pokedex("Mankey", 28.0, "Macaco");
-//        pokedex poke5 = new pokedex("Psyduck ", 19.6, "pato");
-//
-//        fp.insertarPokedexobjeto(poke1);
-//        fp.insertarPokedexobjeto(poke2);
-//        fp.insertarPokedexobjeto(poke3);
-//        fp.insertarPokedexobjeto(poke4);
-//        fp.insertarPokedexobjeto(poke5);
-//
-//        //Insertar 2 adestradores
-//        adestrador ad = new adestrador("Brock", "18/08/2000");
-//        fad.insertarAdestradorCampos("Kyriakos Kapakoulak", "15/05/1962");
-//        fad.insertarAdestradorObjeto(ad);
+        fp.insertarPokedexCampos("Venusaur", 100.00, "Sapo arbore");
+        fp.insertarPokedexCampos("Beedrill ", 29.5, "Avispa");
+        fp.insertarPokedexCampos("Nidoking ", 62.0, "Koalasaurio");
+        fp.insertarPokedexCampos("Vileplume  ", 18.6, "seta");
+        fp.insertarPokedexCampos("Meowth", 4.2, "Gato");
+
+        pokedex poke1 = new pokedex("Golbat", 55.0, "Murciegalo");
+        pokedex poke2 = new pokedex("Blastoise ", 85.5, "Tortuga");
+        pokedex poke3 = new pokedex("Charizard ", 90.5, "dragon");
+        pokedex poke4 = new pokedex("Mankey", 28.0, "Macaco");
+        pokedex poke5 = new pokedex("Psyduck ", 19.6, "pato");
+
+        fp.insertarPokedexobjeto(poke1);
+        fp.insertarPokedexobjeto(poke2);
+        fp.insertarPokedexobjeto(poke3);
+        fp.insertarPokedexobjeto(poke4);
+        fp.insertarPokedexobjeto(poke5);
+
+        //Insertar 2 adestradores
+        adestrador ad = new adestrador("Brock", "18/08/2000");
+        fad.insertarAdestradorCampos("Kyriakos Kapakoulak", "15/05/1962");
+        fad.insertarAdestradorObjeto(ad);
 
         //Listar pokemons na pokedex
 
@@ -41,18 +41,40 @@ public class Main {
 
         //  Modificar dous adestradores
 
-//        fad.modificarAdestradorID(9, "Kyriakos Grizzly", "15/05/1962");
-//        fad.modificarAdestradorID(10, "Misty ", "04/07/2003");
+        fad.modificarAdestradorID(1, "Kyriakos Grizzly", "15/05/1962");
+        fad.modificarAdestradorID(2, "Misty ", "04/07/2003");
 
 
         // Modificar duas entradas na pokedex
-        //  fp.actualizarPokedex(12, "Nidoqueen", 52.0, "Koalasauria");
+        fp.actualizarPokedex(3, "Nidoqueen", 52.0, "Koalasauria");
 
         pokedex pok = fp.leerPokedexPorNombre("Meowth");
         pok.setNome("Persian");
         pok.setPeso(20);
         pok.setMisc("Gato mais grande");
         fp.actualizarPokedexObjeto(pok);
+
+
+        //Listar pokemons na pokedex
+
+        fp.leerPokedexToda();
+
+        //Listar adestradores
+
+        fad.lerAdestradores();
+
+
+        //( toXML pokemons)
+
+        conversorXML cx = new conversorXML();
+        cx.conversorPokedex(fp.leerPokedexToda());
+        //(toXML adestradores)
+        cx.conversorAdestrador(fad.lerAdestradores());
+
+        //Eliminar tódo-los datos das táboas
+        fp.eliminarPokedexToda();
+        fad.eliminarTaboaNome("Kyriakos Grizzly");
+        fad.eliminarTaboaNome("Misty ");
 
 
     }

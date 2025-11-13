@@ -185,7 +185,7 @@ public class funcionesPokedex {
 
     }
 
-    public void eliminarPokedex() {
+    public void eliminarPokedexToda() {
         try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
 
             Transaction trans = ses.beginTransaction();
