@@ -60,7 +60,6 @@ public class funcionesAdestrador {
 
             Transaction transaction = ses.beginTransaction();
 
-
             Query<adestrador> o = ses.createQuery("FROM adestrador a order by a.id ASC");
 
             String q = "from adestrador";
@@ -92,14 +91,42 @@ public class funcionesAdestrador {
         }
     }
 
+    public void eliminarTaboaNome(String nome) {
+        try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
+
+            Transaction trans = ses.beginTransaction();
+
+
+            List<adestrador> lista = ses.createQuery("from adestrador where nome=:nome", adestrador.class).setParameter("nome", nome).getResultList();
+
+            if (!lista.isEmpty()) {
+                adestrador ad = lista.get(0);
+                ses.delete(ad);
+                System.out.println("Adestrador borrado con exito");
+            }
+            trans.commit();
+        } catch (Exception e) {
+            System.err.println("Error ao eliminar entrada" + e.getMessage());
+
+        }
+
+    }
+
     public void eliminarTaboa() {
         try (
                 Session ses = HibernateConfig.getSessionFactory().openSession();
         ) {
+            Transaction trans = ses.beginTransaction();
 
+            Query consulta = ses.createQuery("DELETE FROM adestrador");
 
-
+            consulta.executeUpdate();
+            trans.commit();
+        } catch (Exception e) {
+            System.err.println("ERRO AO ELIMINAR TABOA: " + e.getMessage());
         }
+
+
     }
 
 

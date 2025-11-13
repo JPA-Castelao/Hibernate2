@@ -58,7 +58,6 @@ public class funcionesPokedex {
             String hql = "FROM pokedex";
 
 
-
             Query<pokedex> query = ses.createQuery(hql, pokedex.class);
 
             lista = query.list();
@@ -81,7 +80,6 @@ public class funcionesPokedex {
             Transaction transaction = ses.beginTransaction();
 
             List<pokedex> listaPokedex = ses.createQuery("from pokedex where nome = :nome", pokedex.class).setParameter("nome", nomePokedex).getResultList();
-            Query query = ses.createQuery("from pokedex p order by p.id ASC", pokedex.class);
             if (!listaPokedex.isEmpty()) {
                 poke = listaPokedex.get(0);
             } else {
@@ -129,7 +127,7 @@ public class funcionesPokedex {
 
     public void actualizarPokedexObjeto(pokedex entradaPokedex) {
         try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
-            Transaction transaction = ses.getTransaction();
+            Transaction transaction = ses.beginTransaction();
             ses.merge(entradaPokedex);
             transaction.commit();
         } catch (Exception e) {
@@ -187,4 +185,20 @@ public class funcionesPokedex {
 
     }
 
+    public void eliminarPokedex() {
+        try (Session ses = HibernateConfig.getSessionFactory().openSession()) {
+
+            Transaction trans = ses.beginTransaction();
+
+            Query consulta = ses.createQuery("DELETE FROM pokedex");
+
+            consulta.executeUpdate();
+
+            trans.commit();
+
+        } catch (Exception e) {
+            System.err.println("Imposible borrar: " + e.getMessage());
+
+        }
+    }
 }

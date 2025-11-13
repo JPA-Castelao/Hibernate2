@@ -1,15 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Adestradores>
-    <adestrador>
-        <nome>Paco Ibañez</nome>
-        <nacemento/>
-    </adestrador>
-    <adestrador>
-        <nome>Kyriakos Grizzly</nome>
-        <nacemento/>
-    </adestrador>
-    <adestrador>
-        <nome>Aitor Menta</nome>
-        <nacemento/>
-    </adestrador>
-</Adestradores>
+<Adestradores/>

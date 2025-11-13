@@ -19,7 +19,7 @@ public class pokedex implements Serializable {
     @Column(name = "misc", length = 100)
     private String misc;
 
-    public void pokedex() {
+    public  pokedex() {
 
 
     }
@@ -30,9 +30,6 @@ public class pokedex implements Serializable {
         this.misc = misc;
     }
 
-    public pokedex() {
-
-    }
 
 
 
